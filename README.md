@@ -129,13 +129,13 @@ Activate the virtual environment:
 Upgrade pip:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install --upgrade pip
 ```
 
 Install the required Python libraries:
 
 ```bash
-pip install opencv-contrib-python numpy Pillow pyserial
+python -m pip install -r requirements.txt
 ```
 
 **Note:** OpenCV Contrib is required for the LBPH face recognizer. Avoid installing `opencv-python` alongside `opencv-contrib-python` in the same environment.

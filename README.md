@@ -17,6 +17,7 @@ The project is integrated with an Arduino microcontroller through serial communi
 - [Execution](#execution)
 - [Expected Output](#expected-output)
 - [Future Improvements](#future-improvements)
+- [Dataset and Privacy](#dataset-and-privacy)
 - [Author](#author)
 
 ## Project Overview
@@ -43,7 +44,7 @@ Manual identity verification can be time-consuming and requires human involvemen
 - Haar Cascade frontal-face detection.
 - LBPH-based face recognition.
 - Custom face dataset training.
-- Recognition of registered and unknown individuals.
+- Recognition of registered and unknown faces.
 - Arduino serial communication.
 - LED-based visual indication for authorization status.
 
@@ -82,6 +83,7 @@ Face-Recognition-System/
 ├── trainner.yml
 │
 ├── image_data/
+│
 ├── ard_chaser/
 │   └── ard_chaser.ino
 │
@@ -247,9 +249,9 @@ Press `q` to exit.
 
 ## Dataset and Privacy
 
-The `image_data/` directory contains the face images used for training the recognition model.
+The `image_data/` directory contains face images used to train the recognition model.
 
-When sharing or publishing face images, ensure that you have the permission of the individuals whose images are included.
+Before publishing face images, ensure that you have permission from the individuals whose images are included.
 
 ## Author
 

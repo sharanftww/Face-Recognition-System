@@ -1,8 +1,8 @@
 # Face Recognition-Based Access Control System
 
-A real-time face recognition system developed using Python and OpenCV that identifies registered individuals through a webcam. The system uses Haar Cascade for face detection and the LBPH (Local Binary Patterns Histograms) algorithm for face recognition.
+A real-time face recognition-based access control system developed using Python and OpenCV. The system detects and recognizes registered individuals through a webcam using Haar Cascade and the LBPH (Local Binary Patterns Histograms) algorithm.
 
-The project integrates with an Arduino microcontroller through serial communication to control an LED based on face recognition results, providing a visual indication of authorization status.
+The project is integrated with an Arduino microcontroller through serial communication to control an LED based on face recognition results. The LED indicates whether an authorized individual has been recognized.
 
 ## Table of Contents
 
@@ -23,7 +23,7 @@ The project integrates with an Arduino microcontroller through serial communicat
 
 This project demonstrates a computer vision-based identity recognition system that uses a webcam to detect and recognize registered individuals.
 
-It combines face detection, face recognition and Arduino hardware integration to provide an LED-based visual indication when an individual is recognized as authorized.
+It combines face detection, face recognition, and Arduino hardware integration to provide an LED-based visual indication when an individual is recognized as authorized.
 
 ## Problem Statement
 
@@ -39,13 +39,13 @@ Manual identity verification can be time-consuming and requires human involvemen
 
 ## Features
 
-- Real-time face detection.
+- Real-time face detection using a webcam.
 - Haar Cascade frontal-face detection.
 - LBPH-based face recognition.
 - Custom face dataset training.
 - Recognition of registered and unknown individuals.
 - Arduino serial communication.
-- LED-based visual indication.
+- LED-based visual indication for authorization status.
 
 ## How It Works
 
@@ -59,12 +59,12 @@ Manual identity verification can be time-consuming and requires human involvemen
 
 ## Technologies Used
 
-- Python
-- OpenCV
-- Haar Cascade
-- LBPH Face Recognizer
-- Arduino
-- Serial Communication
+- **Programming Language:** Python
+- **Computer Vision:** OpenCV
+- **Face Detection:** Haar Cascade
+- **Face Recognition:** LBPH
+- **Hardware:** Arduino
+- **Communication:** Serial Communication (PySerial)
 
 ## Project Structure
 
@@ -83,7 +83,10 @@ Face-Recognition-System/
 │
 ├── image_data/
 ├── ard_chaser/
+│   └── ard_chaser.ino
 │
+├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
@@ -118,9 +121,21 @@ cd Face-Recognition-System
 python -m venv .venv
 ```
 
-Activate the virtual environment:
+Activate the virtual environment in PowerShell:
 
-```bash
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+If PowerShell blocks script execution, run:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Then activate the environment again:
+
+```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
@@ -142,7 +157,7 @@ python -m pip install -r requirements.txt
 
 ## Execution
 
-Run the following Python scripts from the main project directory in the specified order.
+Run the following Python scripts from the main project directory.
 
 ### Step 1: Test Webcam Access
 
@@ -176,7 +191,6 @@ This script:
 - Detects and preprocesses faces.
 - Trains the LBPH face recognition model.
 - Generates the following files:
-
   - `trainner.yml`
   - `labels.pickle`
 
@@ -188,7 +202,7 @@ Run this step again whenever you update your training images.
 python face_recognise.py
 ```
 
-This script accesses the webcam, detects faces and identifies registered individuals using the trained model.
+This script accesses the webcam, detects faces, and identifies registered individuals using the trained model.
 
 Unknown individuals are displayed as `unknown`.
 
@@ -200,7 +214,7 @@ Press `q` to exit.
 2. Open `ard_chaser/ard_chaser.ino` using Arduino IDE.
 3. Select the appropriate Arduino board and COM port.
 4. Upload the Arduino program.
-5. Ensure the serial port is available and not being used by the Arduino Serial Monitor.
+5. Ensure the serial port is not being used by the Arduino Serial Monitor.
 6. Check the Arduino COM port in Windows Device Manager.
 7. Update the configured serial port in `face_recogniser1.py` if necessary.
 
@@ -231,10 +245,16 @@ Press `q` to exit.
 - Develop a graphical user interface.
 - Improve the overall system's usability and performance.
 
+## Dataset and Privacy
+
+The `image_data/` directory contains the face images used for training the recognition model.
+
+When sharing or publishing face images, ensure that you have the permission of the individuals whose images are included.
+
 ## Author
 
 **Sharan Suresh**
 
-GitHub: [https://github.com/sharanftww](https://github.com/sharanftww)
+GitHub: https://github.com/sharanftww
 
-Project Repository: [Face Recognition-Based Access Control System](https://github.com/sharanftww/Face-Recognition-System)
+Project Repository: https://github.com/sharanftww/Face-Recognition-System

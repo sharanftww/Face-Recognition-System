@@ -121,7 +121,7 @@ python -m venv .venv
 Activate the virtual environment:
 
 ```bash
-.venv\Scripts\activate
+.\.venv\Scripts\Activate.ps1
 ```
 
 ### 3. Install Required Libraries
@@ -129,7 +129,7 @@ Activate the virtual environment:
 Upgrade pip:
 
 ```bash
-python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
 ```
 
 Install the required Python libraries:

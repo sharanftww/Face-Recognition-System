@@ -16,8 +16,8 @@ The project integrates with an Arduino microcontroller through serial communicat
 - [Installation](#installation)
 - [Execution](#execution)
 - [Expected Output](#expected-output)
-- [Screenshots](#screenshots)
 - [Future Improvements](#future-improvements)
+- [Author](#author)
 
 ## Project Overview
 
@@ -89,23 +89,139 @@ Face-Recognition-System/
 
 ## Installation
 
-Installation instructions will be added after verifying the required Python libraries and project dependencies.
+### Prerequisites
+
+- Windows 10/11
+- Python 3
+- Visual Studio Code
+- Webcam
+- Arduino board (for hardware integration)
+- Arduino IDE
+
+### 1. Clone the Repository
+
+Open the VS Code terminal and execute:
+
+```bash
+git clone https://github.com/sharanftww/Face-Recognition-System.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd Face-Recognition-System
+```
+
+### 2. Create a Virtual Environment
+
+```bash
+python -m venv .venv
+```
+
+Activate the virtual environment:
+
+```bash
+.venv\Scripts\activate
+```
+
+### 3. Install Required Libraries
+
+Upgrade pip:
+
+```bash
+python -m pip install --upgrade pip
+```
+
+Install the required Python libraries:
+
+```bash
+pip install opencv-contrib-python numpy Pillow pyserial
+```
+
+**Note:** OpenCV Contrib is required for the LBPH face recognizer. Avoid installing `opencv-python` alongside `opencv-contrib-python` in the same environment.
 
 ## Execution
 
-Execution instructions will be added after verifying the correct order of running the Python scripts and Arduino program.
+Run the following Python scripts from the main project directory in the specified order.
+
+### Step 1: Test Webcam Access
+
+```bash
+python AccessTo_Webcam.py
+```
+
+This script opens the webcam and displays the live video feed.
+
+Press `q` to close the camera window.
+
+### Step 2: Test Face Detection
+
+```bash
+python Face_identification.py
+```
+
+This script uses Haar Cascade to detect faces and display bounding boxes around them.
+
+Press `q` to exit.
+
+### Step 3: Train the Face Recognition Model
+
+```bash
+python face_trainer.py
+```
+
+This script:
+
+- Loads training images from the `image_data/` directory.
+- Detects and preprocesses faces.
+- Trains the LBPH face recognition model.
+- Generates the following files:
+
+  - `trainner.yml`
+  - `labels.pickle`
+
+Run this step again whenever you update your training images.
+
+### Step 4: Run Face Recognition
+
+```bash
+python face_recognise.py
+```
+
+This script accesses the webcam, detects faces and identifies registered individuals using the trained model.
+
+Unknown individuals are displayed as `unknown`.
+
+Press `q` to exit.
+
+### Step 5: Run Arduino-Based Access Control
+
+1. Connect the Arduino board to your computer.
+2. Open `ard_chaser/ard_chaser.ino` using Arduino IDE.
+3. Select the appropriate Arduino board and COM port.
+4. Upload the Arduino program.
+5. Ensure the serial port is available and not being used by the Arduino Serial Monitor.
+6. Check the Arduino COM port in Windows Device Manager.
+7. Update the configured serial port in `face_recogniser1.py` if necessary.
+
+Run the Arduino-integrated Python program:
+
+```bash
+python face_recogniser1.py
+```
+
+The system identifies individuals through the webcam and sends serial signals to the Arduino to control the LED based on authorization status.
+
+Press `q` to exit.
 
 ## Expected Output
 
-- Live webcam feed.
-- Detection of faces in the camera frame.
+- Live webcam video feed.
+- Detection of faces using Haar Cascade.
 - Recognition of registered individuals.
 - Identification of unknown faces.
-- LED indication through Arduino integration.
-
-## Screenshots
-
-Screenshots of the working application will be added here.
+- Arduino-controlled LED activation for an authorized individual.
+- LED switched off when an authorized individual is not detected.
 
 ## Future Improvements
 
@@ -119,4 +235,6 @@ Screenshots of the working application will be added here.
 
 **Sharan Suresh**
 
-GitHub: https://github.com/sharanftww
+GitHub: [https://github.com/sharanftww](https://github.com/sharanftww)
+
+Project Repository: [Face Recognition-Based Access Control System](https://github.com/sharanftww/Face-Recognition-System)
